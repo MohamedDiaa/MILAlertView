@@ -148,12 +148,12 @@ public class MILAlertView : UIView {
     :param: callback The callback function that is to be executed when the MILAlertView or reload button is tapped
     */
     private func setCallbackFunc(callback:(()->())!){
-        var tapGesture = UITapGestureRecognizer(target: MILAlertViewManager.sharedInstance, action: "hide") //hide if no callback
+        var tapGesture = UITapGestureRecognizer(target: MILAlertViewManager.sharedInstance, action: #selector(MILAlertViewManager.hide)) //hide if no callback
         if let cb = callback {
             self.reloadButton.hidden = false
             self.callback = cb
-            tapGesture = UITapGestureRecognizer(target: MILAlertViewManager.sharedInstance, action: "reload") //reload then hide if callback
-            self.reloadButton.addTarget(MILAlertViewManager.sharedInstance, action: "reload", forControlEvents: UIControlEvents.TouchUpInside)
+            tapGesture = UITapGestureRecognizer(target: MILAlertViewManager.sharedInstance, action: #selector(MILAlertViewManager.reload)) //reload then hide if callback
+            self.reloadButton.addTarget(MILAlertViewManager.sharedInstance, action: #selector(MILAlertViewManager.reload), forControlEvents: UIControlEvents.TouchUpInside)
         }else{
             self.reloadButton.hidden = true
         }

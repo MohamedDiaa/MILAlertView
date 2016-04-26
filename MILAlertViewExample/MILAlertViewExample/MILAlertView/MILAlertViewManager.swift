@@ -85,7 +85,7 @@ public class MILAlertViewManager: NSObject {
             }
         } else { //no callback, so hide after a time if given
             if let time = forSeconds {
-                self.autoHideTimer = NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "hide", userInfo: nil, repeats: false)
+                self.autoHideTimer = NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: #selector(MILAlertViewManager.hide), userInfo: nil, repeats: false)
             } else { //no time given, so keep alert up until tapped
                 if let timer = self.autoHideTimer {
                     timer.invalidate()
